@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dqbsup6t2es2"]
+
+[ext_resource type="FontFile" uid="uid://b2muai3i6vj2y" path="res://assets/Geo-Regular.ttf" id="1_ahhtf"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1192200779]
+
+[node name="Screen" type="ColorRect" parent="." unique_id=1580700331]
+offset_right = 1100.0
+offset_bottom = 650.0
+color = Color(1, 1, 1, 0)
+
+[node name="Score" type="Label" parent="Screen" unique_id=1390975104]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_ahhtf")
+theme_override_font_sizes/font_size = 75
+text = "0"
+
+[node name="Distance" type="Label" parent="Screen" unique_id=2092731676]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 20.0
+offset_right = 40.0
+offset_bottom = 78.0
+theme_override_fonts/font = ExtResource("1_ahhtf")
+theme_override_font_sizes/font_size = 50
+text = "0km"
