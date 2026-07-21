@@ -14,6 +14,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y -= ACCELERATION * delta
 	
 	#if not is_on_floor() and not is_on_ceiling():
-	$Texture.rotation_degrees = (velocity.y / 20)
+	rotation_degrees = (velocity.y / 20) + 90
 
 	move_and_slide()
