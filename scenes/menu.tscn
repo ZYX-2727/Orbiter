@@ -1,16 +1,105 @@
 [gd_scene format=3 uid="uid://b1d8oy20j5d1r"]
 
+[ext_resource type="Script" uid="uid://2umhnokermeg" path="res://scripts/menu.gd" id="1_vjb58"]
+[ext_resource type="FontFile" uid="uid://b2muai3i6vj2y" path="res://assets/Geo-Regular.ttf" id="1_yqeox"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqeox"]
+bg_color = Color(0.65, 0.65, 0.65, 0.7294118)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
 [node name="Menu" type="Node2D" unique_id=686618189]
+script = ExtResource("1_vjb58")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1186990298]
 offset_left = -43.0
 offset_top = -26.0
 offset_right = 1236.0
 offset_bottom = 668.0
-color = Color(0.32, 0.32, 0.32, 0.61960787)
+color = Color(0.32, 0.32, 0.32, 0.74509805)
 
 [node name="Panel" type="Panel" parent="." unique_id=925966109]
 offset_left = 200.0
 offset_top = 75.0
 offset_right = 900.0
 offset_bottom = 575.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yqeox")
+
+[node name="High" type="Label" parent="Panel" unique_id=345430162]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = -150.0
+offset_right = 93.0
+offset_bottom = -98.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_yqeox")
+theme_override_font_sizes/font_size = 50
+text = "High Score: 0"
+
+[node name="Score" type="Label" parent="Panel" unique_id=106140063]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -143.5
+offset_right = 143.5
+offset_bottom = 103.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_yqeox")
+theme_override_font_sizes/font_size = 100
+text = "Orbiter"
+
+[node name="Play" type="Button" parent="Panel" unique_id=1076269714]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.5
+offset_top = -50.0
+offset_right = 151.5
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_yqeox")
+theme_override_font_sizes/font_size = 75
+text = "Play"
+
+[node name="Settings" type="OptionButton" parent="Panel" unique_id=361618502]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.5
+offset_top = 50.0
+offset_right = 151.5
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_yqeox")
+theme_override_font_sizes/font_size = 75
+selected = 0
+item_count = 3
+popup/item_0/text = "Easy"
+popup/item_0/id = 0
+popup/item_1/text = "Medium"
+popup/item_1/id = 1
+popup/item_2/text = "Hard"
+popup/item_2/id = 2
+
+[connection signal="pressed" from="Panel/Play" to="." method="_on_play_pressed"]
