@@ -12,5 +12,8 @@ func _physics_process(delta: float) -> void:
 	# Handle going up
 	if Input.is_action_pressed("up"):
 		velocity.y -= ACCELERATION * delta
+	
+	#if not is_on_floor() and not is_on_ceiling():
+	$Texture.rotation_degrees = (velocity.y / 20)
 
 	move_and_slide()

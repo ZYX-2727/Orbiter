@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b3fxsaoywlfvi"]
 
 [ext_resource type="PackedScene" uid="uid://dcpnvrcfwsbjb" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://co8mn3kjjajqv" path="res://scenes/asteroid.tscn" id="2_0wfyh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
 size = Vector2(1160, 20)
@@ -8,16 +9,23 @@ size = Vector2(1160, 20)
 [node name="Main" type="Node2D" unique_id=898456584]
 
 [node name="Player" parent="." unique_id=409255580 instance=ExtResource("1_o5qli")]
-position = Vector2(589, 335)
+position = Vector2(231, 316)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1267752061]
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1700639126]
 position = Vector2(570, 0)
 shape = SubResource("RectangleShape2D_o5qli")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1218814502]
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1343456613]
 position = Vector2(579, 648)
 shape = SubResource("RectangleShape2D_o5qli")
+
+[node name="Asteroid" parent="." unique_id=416727784 instance=ExtResource("2_0wfyh")]
+position = Vector2(1083, 288)
