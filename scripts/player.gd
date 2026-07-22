@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 const ACCELERATION = 2000 #px/s2
+const identifier = "player"
+
 func _ready() -> void:
 	EventBus.connect("death", _on_death)
 

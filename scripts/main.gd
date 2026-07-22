@@ -14,11 +14,24 @@ var high_score: int
 var asteroids_destroyed: int = 0
 var distance: float #In km
 const SPEED: float = 7.66 #km/s
+var bullets = 3
+
+var bullet_objs: Array
 
 func save_data(section: String, key: String, value) -> void:
 	var data = ConfigFile.new()
 	data.set_value(section, key, value)
 	data.save("user://data.cfg")
+
+func adjust_bullet_hud() -> void:
+	var i = 0
+	
+	for bullet_obj in bullet_objs:
+		i += 1
+		if bullets >= i:
+			bullet_obj.show()
+		else:
+			bullet_obj.hide()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -34,25 +47,26 @@ func _ready() -> void:
 	high_score = data.get_value("player", "high_score", 0)
 	$Menu/Panel/High.text = "High Score: " + str(high_score)
 	
+	bullet_objs = [
+	$HUD/Screen/Bullet1,
+	$HUD/Screen/Bullet2,
+	$HUD/Screen/Bullet3,
+	$HUD/Screen/Bullet4,
+	$HUD/Screen/Bullet5
+	]
+	
 	asteroid_pre = preload("res://scenes/asteroid.tscn")
 	player_pre = preload("res://scenes/player.tscn")
 	bullet_pre = preload("res://scenes/bullet.tscn")
 	EventBus.connect("death", _on_death)
 	EventBus.connect("start", _on_start)
+	EventBus.connect("asteroid_destroyed", _on_asteroid_destroyed)
 	$Menu.z_index = 1000
 	$HUD.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("shoot") and playing and $Player:
-		var new_bullet = bullet_pre.instantiate()
-		new_bullet.position = $Player.position + Vector2.RIGHT.rotated(deg_to_rad($Player.rotation_degrees))
-		new_bullet.rotation_degrees = $Player.rotation_degrees - 90
-		add_child(new_bullet)
-		print("pew!")
-	
-	
 	time_passed += delta
 	if time_passed > between_asteroids:
 		time_passed -= between_asteroids
@@ -65,6 +79,15 @@ func _process(delta: float) -> void:
 		
 		score = distance + asteroids_destroyed * 10
 		$HUD/Screen/Score.text = str(score)
+		
+		if Input.is_action_just_pressed("shoot") and playing and $Player and bullets > 0:
+			var new_bullet = bullet_pre.instantiate()
+			new_bullet.position = $Player.position + 100 * Vector2.RIGHT#.rotated(deg_to_rad($Player.rotation_degrees))
+			new_bullet.rotation_degrees = $Player.rotation_degrees - 90
+			add_child(new_bullet)
+			
+			bullets -= 1
+			adjust_bullet_hud()
 
 
 func _on_death() -> void:
@@ -88,6 +111,7 @@ func _on_death() -> void:
 	score = 0
 	distance = 0
 	asteroids_destroyed = 0
+	bullets = 3
 
 
 func _on_start(difficulty: int) -> void:
@@ -100,6 +124,11 @@ func _on_start(difficulty: int) -> void:
 	
 	playing = true
 	$HUD.show()
+	adjust_bullet_hud()
 	var new_player = player_pre.instantiate()
 	new_player.position = Vector2(231, 325) 
 	add_child(new_player)
+
+
+func _on_asteroid_destroyed() -> void:
+	asteroids_destroyed += 1

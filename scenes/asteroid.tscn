@@ -7,7 +7,6 @@
 radius = 140.22838
 
 [node name="Asteroid" type="Area2D" unique_id=9759962]
-collision_layer = 2
 script = ExtResource("1_6mo6b")
 
 [node name="Texture" type="Sprite2D" parent="." unique_id=269983257]

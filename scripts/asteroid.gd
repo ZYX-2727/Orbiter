@@ -3,6 +3,7 @@ extends Area2D
 const SPEED = 350
 var SCALE
 var ROTATION
+var destroyed
 
 func _ready() -> void:
 	#SPEED = 200
@@ -12,13 +13,16 @@ func _ready() -> void:
 	EventBus.connect("start", _on_start)
 
 func _physics_process(delta: float) -> void:
-	rotation_degrees += ROTATION
+	if destroyed:
+		queue_free()
 	
+	rotation_degrees += ROTATION
 	position.x -= SPEED * delta
 
 
 func _on_body_entered(body: Node2D) -> void:
-	EventBus.emit_signal("death")
+	if body.identifier == "player":
+		EventBus.emit_signal("death")
 
 func _on_start(_difficulty: int) -> void:
 	queue_free()
