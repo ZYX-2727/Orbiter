@@ -4,6 +4,7 @@ var time_passed: float = 0
 var between_asteroids = 1.5
 var asteroid_pre: PackedScene
 var player_pre: PackedScene
+var bullet_pre: PackedScene
 var playing: bool = false
 var first_time: bool
 
@@ -35,6 +36,7 @@ func _ready() -> void:
 	
 	asteroid_pre = preload("res://scenes/asteroid.tscn")
 	player_pre = preload("res://scenes/player.tscn")
+	bullet_pre = preload("res://scenes/bullet.tscn")
 	EventBus.connect("death", _on_death)
 	EventBus.connect("start", _on_start)
 	$Menu.z_index = 1000
@@ -43,6 +45,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("shoot") and playing and $Player:
+		var new_bullet = bullet_pre.instantiate()
+		new_bullet.position = $Player.position + Vector2.RIGHT.rotated(deg_to_rad($Player.rotation_degrees))
+		new_bullet.rotation_degrees = $Player.rotation_degrees - 90
+		add_child(new_bullet)
+		print("pew!")
+	
+	
 	time_passed += delta
 	if time_passed > between_asteroids:
 		time_passed -= between_asteroids
@@ -80,7 +90,14 @@ func _on_death() -> void:
 	asteroids_destroyed = 0
 
 
-func _on_start(_difficulty: int) -> void:
+func _on_start(difficulty: int) -> void:
+	if difficulty == 0:
+		between_asteroids = 2
+	elif difficulty == 1:
+		between_asteroids = 1.5
+	elif difficulty == 2:
+		between_asteroids = 1
+	
 	playing = true
 	$HUD.show()
 	var new_player = player_pre.instantiate()

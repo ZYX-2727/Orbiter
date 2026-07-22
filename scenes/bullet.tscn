@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b1h2shnsxy6mg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1aey"]
+size = Vector2(16, 8)
+
+[node name="Bullet" type="Area2D" unique_id=262904556]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1312285485]
+shape = SubResource("RectangleShape2D_h1aey")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1067401398]
+offset_left = -8.0
+offset_top = -4.0
+offset_right = 8.0
+offset_bottom = 4.0
+size_flags_horizontal = 4
