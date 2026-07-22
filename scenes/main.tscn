@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d1rmjdfox838f" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://dqbsup6t2es2" path="res://scenes/hud.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://b1d8oy20j5d1r" path="res://scenes/menu.tscn" id="3_sugp2"]
+[ext_resource type="Texture2D" uid="uid://cq12sjosj4f3k" path="res://assets/ipcc_bluemarble_west_lrg.jpg" id="5_tbgi4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
 size = Vector2(1160, 20)
@@ -27,5 +28,18 @@ position = Vector2(516, 658)
 shape = SubResource("RectangleShape2D_o5qli")
 
 [node name="HUD" parent="." unique_id=1192200779 instance=ExtResource("2_sugp2")]
+
+[node name="Space" type="ColorRect" parent="." unique_id=119181984]
+offset_left = -37.0
+offset_top = -69.0
+offset_right = 1181.0
+offset_bottom = 223.0
+color = Color(0, 0, 0, 1)
+
+[node name="Earth" type="Sprite2D" parent="." unique_id=2009143816]
+position = Vector2(588, 3924.0005)
+rotation = -0.17976892
+scale = Vector2(2.1129653, 2.1129653)
+texture = ExtResource("5_tbgi4")
 
 [node name="Menu" parent="." unique_id=686618189 instance=ExtResource("3_sugp2")]

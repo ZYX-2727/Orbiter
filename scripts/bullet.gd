@@ -5,7 +5,7 @@ const SPEED = 400
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	EventBus.connect("start", _on_start)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,4 +16,7 @@ func _process(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	EventBus.emit_signal("asteroid_destroyed")
 	area.destroyed = true
+	queue_free()
+
+func _on_start(_difficulty: int) -> void:
 	queue_free()

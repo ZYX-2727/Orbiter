@@ -1,5 +1,8 @@
 extends Node2D
 
+var EARTH_COEFFICENT = 0.2 #360/(90 * 60)
+#360/(time secs) = earth coefficent, so 90 mins would be ^
+
 var time_passed: float = 0
 var between_asteroids = 1.5
 var asteroid_pre: PackedScene
@@ -73,11 +76,13 @@ func _process(delta: float) -> void:
 		var new_asteroid = asteroid_pre.instantiate()
 		new_asteroid.position = Vector2(1200, randi_range(50, 600))
 		add_child(new_asteroid)
+	$Earth.rotation_degrees -= EARTH_COEFFICENT * delta
+	
 	if playing:
 		distance += delta * SPEED
 		$HUD/Screen/Distance.text = str(int(round(distance))) + " km"
 		
-		score = distance + asteroids_destroyed * 10
+		score = round(distance) + asteroids_destroyed * 10
 		$HUD/Screen/Score.text = str(score)
 		
 		if Input.is_action_just_pressed("shoot") and playing and $Player and bullets > 0:
