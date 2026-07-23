@@ -9,8 +9,6 @@ size = Vector2(84, 54)
 collision_layer = 4
 script = ExtResource("1_bq6ah")
 
-[node name="Texture" type="Sprite2D" parent="." unique_id=524875276]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1367453927]
 shape = SubResource("RectangleShape2D_umph0")
 

@@ -9,4 +9,6 @@ signal asteroid_destroyed
 @warning_ignore("unused_signal")
 signal bullets_collected
 @warning_ignore("unused_signal")
+signal points_collected(points: int)
+@warning_ignore("unused_signal")
 signal pause

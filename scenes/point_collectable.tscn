@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bqkmkbxj4heqo"]
+
+[ext_resource type="Script" uid="uid://dkn0bp4dbpvf4" path="res://scripts/point_collectable.gd" id="1_d0c8k"]
+[ext_resource type="FontFile" uid="uid://b2muai3i6vj2y" path="res://assets/Geo-Regular.ttf" id="1_j43ia"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0c8k"]
+size = Vector2(86, 31)
+
+[node name="PointCollectable" type="Area2D" unique_id=1479885001]
+collision_layer = 4
+script = ExtResource("1_d0c8k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1408074182]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_d0c8k")
+
+[node name="PointsValue" type="Label" parent="." unique_id=723251855]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -24.0
+offset_right = 30.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_j43ia")
+theme_override_font_sizes/font_size = 60
+text = "100"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

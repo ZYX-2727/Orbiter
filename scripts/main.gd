@@ -8,6 +8,7 @@ var asteroid_pre: PackedScene
 var player_pre: PackedScene
 var bullet_pre: PackedScene
 var bull_collect_pre: PackedScene
+var point_collect_pre: PackedScene
 var playing: bool = false
 var first_time: bool
 
@@ -18,6 +19,7 @@ var asteroids_destroyed: int = 0
 var distance: float #In km
 const SPEED: float = 7.66 #km/s
 var bullets = 3
+var points_collected = 0
 var paused: bool = false
 
 var bullet_objs: Array
@@ -60,6 +62,7 @@ func _ready() -> void:
 	]
 	
 	bull_collect_pre = preload("res://scenes/bullet_collectable.tscn")
+	point_collect_pre = preload("res://scenes/point_collectable.tscn")
 	asteroid_pre = preload("res://scenes/asteroid.tscn")
 	player_pre = preload("res://scenes/player.tscn")
 	bullet_pre = preload("res://scenes/bullet.tscn")
@@ -67,6 +70,7 @@ func _ready() -> void:
 	EventBus.connect("pause", _on_pause)
 	EventBus.connect("start", _on_start)
 	EventBus.connect("bullets_collected", _on_bullets_collected)
+	EventBus.connect("points_collected", _on_points_collected)
 	EventBus.connect("asteroid_destroyed", _on_asteroid_destroyed)
 	$Menu.z_index = 1000
 	$HUD.hide()
@@ -84,7 +88,7 @@ func _process(delta: float) -> void:
 			distance += delta * SPEED
 			$HUD/Screen/Distance.text = str(int(round(distance))) + " km"
 		
-			score = round(distance) + asteroids_destroyed * 10
+			score = round(distance) + asteroids_destroyed * 10 + points_collected
 			$HUD/Screen/Score.text = str(score)
 		
 			if Input.is_action_just_pressed("shoot") and playing and $Player and bullets > 0:
@@ -101,7 +105,6 @@ func _on_death() -> void:
 	playing = false
 	
 	#Display
-	$BulletTimer.stop()
 	$HUD.hide()
 	$Menu.show()
 	$Menu/Panel/Score.text = "Score: " + str(score)
@@ -120,6 +123,7 @@ func _on_death() -> void:
 	distance = 0
 	asteroids_destroyed = 0
 	bullets = 3
+	points_collected = 0
 
 
 func _on_start(difficulty: int) -> void:
@@ -131,6 +135,7 @@ func _on_start(difficulty: int) -> void:
 		between_asteroids = 1
 	$AsteroidTimer.wait_time = between_asteroids
 	$AsteroidTimer.start() #Restart
+	$CollectableTimer.stop()
 	
 	playing = true
 	$HUD.show()
@@ -150,22 +155,31 @@ func _on_asteroid_timer_timeout() -> void:
 	add_child(new_asteroid)
 	
 	if 1 == randi_range(1, 5):
-		$BulletTimer.wait_time = between_asteroids/2
-		$BulletTimer.start()
+		$CollectableTimer.wait_time = between_asteroids/2
+		$CollectableTimer.start()
 
 
-func _on_bullet_timer_timeout() -> void:
-	var new_bull_collect = bull_collect_pre.instantiate()
-	new_bull_collect.position = Vector2(1200, randi_range(0, 650))
-	add_child(new_bull_collect)
+func _on_collect_timer_timeout() -> void:
+	if 1 == randi_range(1, 2):
+		var new_bull_collect = bull_collect_pre.instantiate()
+		new_bull_collect.position = Vector2(1200, randi_range(0, 650))
+		add_child(new_bull_collect)
+	else:
+		var new_point_collect = point_collect_pre.instantiate()
+		new_point_collect.position = Vector2(1200, randi_range(0, 650))
+		add_child(new_point_collect)
 
 
 func _on_pause() -> void:
 	paused = not paused
 	$AsteroidTimer.paused = paused
-	$BulletTimer.paused = paused
+	$CollectableTimer.paused = paused
 
 
 func _on_bullets_collected() -> void:
 	bullets = clamp(bullets + 3, 0, 5)
 	adjust_bullet_hud()
+
+func _on_points_collected(points: int) -> void:
+	print(points)
+	points_collected += points
