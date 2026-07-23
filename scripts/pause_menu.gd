@@ -5,11 +5,11 @@ var paused: bool = false
 func _ready() -> void:
 	hide()
 	EventBus.connect("pause", _on_pause)
+	EventBus.connect("settings", _on_settings)
 
 
 func _on_pause() -> void:
 	paused = not paused
-	print($Panel/Resume.disabled)
 	if paused:
 		show()
 		z_index = 500
@@ -17,8 +17,15 @@ func _on_pause() -> void:
 		hide()
 
 
+func _on_settings(_paused_arg: bool) -> void:
+	if not visible and paused:
+		show()
+	else:
+		hide()
+
+
 func _on_settings_pressed() -> void:
-	pass # Replace with function body.
+	EventBus.emit_signal("settings", true)
 
 
 func _on_quit_pressed() -> void:

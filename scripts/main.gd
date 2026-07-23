@@ -13,6 +13,10 @@ var playing: bool = false
 var first_time: bool
 var difficulty_mult: float
 
+var music_vol
+var sfx_vol
+var default_difficulty
+
 var score: int = 0
 var high_score: int
 #const SCORE_MULT: float = 1000
@@ -27,6 +31,10 @@ var bullet_objs: Array
 
 func save_data(section: String, key: String, value) -> void:
 	var data = ConfigFile.new()
+	var error = data.load("user://data.cfg")
+	if error:
+		print(error)
+	
 	data.set_value(section, key, value)
 	data.save("user://data.cfg")
 
@@ -40,18 +48,23 @@ func adjust_bullet_hud() -> void:
 		else:
 			bullet_obj.hide()
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+
+func change_via_settings() -> void: #Change the game based on what settings you have
 	var data = ConfigFile.new()
 	var error = data.load("user://data.cfg")
+	if error:
+		print(error)
 	
-	if error != OK:
-		#First time playing
-		first_time = true
-	
-	print(first_time)
-	
+	music_vol = data.get_value("settings", "music_vol", 100)
+	sfx_vol = data.get_value("settings", "sfx_vol", 100)
+	default_difficulty = data.get_value("settings", "default_difficulty", 1)
 	high_score = data.get_value("player", "high_score", 0)
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	change_via_settings()
+	$Menu/Panel/Difficulty.selected = default_difficulty
 	$Menu/Panel/High.text = "High Score: " + str(high_score)
 	
 	bullet_objs = [
@@ -184,5 +197,4 @@ func _on_bullets_collected() -> void:
 	adjust_bullet_hud()
 
 func _on_points_collected(points: int) -> void:
-	print(points)
 	points_collected += points

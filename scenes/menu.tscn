@@ -78,7 +78,7 @@ theme_override_fonts/font = ExtResource("1_yqeox")
 theme_override_font_sizes/font_size = 75
 text = "Play"
 
-[node name="Settings" type="OptionButton" parent="Panel" unique_id=361618502]
+[node name="Difficulty" type="OptionButton" parent="Panel" unique_id=361618502]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

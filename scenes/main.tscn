@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b1d8oy20j5d1r" path="res://scenes/menu.tscn" id="3_sugp2"]
 [ext_resource type="Texture2D" uid="uid://cq12sjosj4f3k" path="res://assets/ipcc_bluemarble_west_lrg.jpg" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bv4vx3cc8h0vq" path="res://scenes/pause_menu.tscn" id="5_tefeu"]
+[ext_resource type="PackedScene" uid="uid://vtr0ix01tdqu" path="res://scenes/settings.tscn" id="6_tefeu"]
 
 [node name="Main" type="Node2D" unique_id=898456584]
 script = ExtResource("1_0wfyh")
@@ -27,6 +28,9 @@ texture = ExtResource("5_tbgi4")
 [node name="Menu" parent="." unique_id=686618189 instance=ExtResource("3_sugp2")]
 
 [node name="PauseMenu" parent="." unique_id=750131063 instance=ExtResource("5_tefeu")]
+visible = false
+
+[node name="Settings" parent="." unique_id=107826438 instance=ExtResource("6_tefeu")]
 visible = false
 
 [node name="AsteroidTimer" type="Timer" parent="." unique_id=794957879]

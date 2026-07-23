@@ -37,56 +37,56 @@ text = "0"
 [node name="Distance" type="Label" parent="All" unique_id=2092731676]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 10.0
-offset_top = 50.0
-offset_right = 93.0
-offset_bottom = 102.0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 91.0
+offset_bottom = 58.0
 theme_override_fonts/font = ExtResource("1_ahhtf")
 theme_override_font_sizes/font_size = 50
 text = "0km"
 
 [node name="Bullet1" type="ColorRect" parent="All" unique_id=1058347366]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 22.0
-offset_right = 52.0
-offset_bottom = 36.0
+offset_left = 25.0
+offset_top = 66.0
+offset_right = 53.0
+offset_bottom = 80.0
 rotation = 1.5707964
 size_flags_horizontal = 4
 
 [node name="Bullet2" type="ColorRect" parent="All" unique_id=454450265]
 layout_mode = 0
-offset_left = 42.0
-offset_top = 22.0
-offset_right = 70.0
-offset_bottom = 36.0
+offset_left = 43.0
+offset_top = 66.0
+offset_right = 71.0
+offset_bottom = 80.0
 rotation = 1.5707964
 size_flags_horizontal = 4
 
 [node name="Bullet3" type="ColorRect" parent="All" unique_id=2110237433]
 layout_mode = 0
-offset_left = 60.0
-offset_top = 22.0
-offset_right = 88.0
-offset_bottom = 36.0
+offset_left = 61.0
+offset_top = 66.0
+offset_right = 89.0
+offset_bottom = 80.0
 rotation = 1.5707964
 size_flags_horizontal = 4
 
 [node name="Bullet4" type="ColorRect" parent="All" unique_id=1555992924]
 layout_mode = 0
-offset_left = 78.0
-offset_top = 22.0
-offset_right = 106.0
-offset_bottom = 36.0
+offset_left = 79.0
+offset_top = 66.0
+offset_right = 107.0
+offset_bottom = 80.0
 rotation = 1.5707964
 size_flags_horizontal = 4
 
 [node name="Bullet5" type="ColorRect" parent="All" unique_id=284499554]
 layout_mode = 0
-offset_left = 96.0
-offset_top = 22.0
-offset_right = 124.0
-offset_bottom = 36.0
+offset_left = 97.0
+offset_top = 66.0
+offset_right = 125.0
+offset_bottom = 80.0
 rotation = 1.5707964
 size_flags_horizontal = 4
 

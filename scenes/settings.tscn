@@ -1,0 +1,219 @@
+[gd_scene format=3 uid="uid://vtr0ix01tdqu"]
+
+[ext_resource type="FontFile" uid="uid://b2muai3i6vj2y" path="res://assets/Geo-Regular.ttf" id="1_5p8wc"]
+[ext_resource type="Script" uid="uid://b7hdlapf64h4" path="res://scripts/settings.gd" id="1_r6d6q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6d6q"]
+bg_color = Color(0.65, 0.65, 0.65, 0.7294118)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5p8wc"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[node name="Settings" type="Node2D" unique_id=107826438]
+script = ExtResource("1_r6d6q")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=720980524]
+offset_left = -43.0
+offset_top = -26.0
+offset_right = 1236.0
+offset_bottom = 668.0
+color = Color(0.32, 0.32, 0.32, 0.74509805)
+
+[node name="Panel" type="Panel" parent="." unique_id=401589735]
+offset_left = 200.0
+offset_top = 75.0
+offset_right = 900.0
+offset_bottom = 575.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r6d6q")
+
+[node name="Title" type="Label" parent="Panel" unique_id=1212728215]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -172.0
+offset_right = 172.0
+offset_bottom = 103.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_5p8wc")
+theme_override_font_sizes/font_size = 100
+text = "Settings"
+
+[node name="DefDiff" type="OptionButton" parent="Panel" unique_id=2038106482]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -126.0
+offset_right = 265.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_5p8wc")
+theme_override_font_sizes/font_size = 75
+selected = 0
+item_count = 3
+popup/item_0/text = "Easy"
+popup/item_0/id = 0
+popup/item_1/text = "Medium"
+popup/item_1/id = 1
+popup/item_2/text = "Hard"
+popup/item_2/id = 2
+
+[node name="Label" type="Label" parent="Panel/DefDiff" unique_id=1498437113]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -438.5
+offset_top = -9.0
+offset_right = -142.5
+offset_bottom = 98.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_5p8wc")
+theme_override_font_sizes/font_size = 50
+text = "Default
+Difficulty"
+autowrap_mode = 2
+
+[node name="MusicVol" type="HSlider" parent="Panel" unique_id=1479016722]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -8.0
+offset_right = 150.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_5p8wc")
+step = 5.0
+value = 100.0
+ticks_on_borders = true
+
+[node name="Percentage" type="Label" parent="Panel/MusicVol" unique_id=952296622]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 116.0
+offset_right = 412.0
+offset_bottom = 107.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_5p8wc")
+theme_override_font_sizes/font_size = 50
+text = "100%"
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MusicVol" unique_id=292365889]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -396.0
+offset_right = -100.0
+offset_bottom = 107.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_5p8wc")
+theme_override_font_sizes/font_size = 50
+text = "Music Volume"
+autowrap_mode = 2
+
+[node name="SFXVol" type="HSlider" parent="Panel" unique_id=591803917]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = 57.0
+offset_right = 150.0
+offset_bottom = 122.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_5p8wc")
+step = 5.0
+value = 100.0
+ticks_on_borders = true
+
+[node name="Percentage" type="Label" parent="Panel/SFXVol" unique_id=1228120642]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 116.0
+offset_right = 412.0
+offset_bottom = 107.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_5p8wc")
+theme_override_font_sizes/font_size = 50
+text = "100%"
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="Panel/SFXVol" unique_id=1602922597]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -396.0
+offset_right = -100.0
+offset_bottom = 107.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_5p8wc")
+theme_override_font_sizes/font_size = 50
+text = "SFX Volume"
+autowrap_mode = 2
+
+[node name="Save" type="Button" parent="Panel" unique_id=866587578]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.82800007
+anchor_right = 0.5
+anchor_bottom = 0.82800007
+offset_left = -210.0
+offset_top = -42.00003
+offset_right = 210.0
+offset_bottom = 43.99997
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_5p8wc")
+theme_override_font_sizes/font_size = 75
+text = "Save Settings"
+
+[connection signal="item_selected" from="Panel/DefDiff" to="." method="_on_difficulty_selected"]
+[connection signal="value_changed" from="Panel/MusicVol" to="." method="_on_music_vol_value_changed"]
+[connection signal="value_changed" from="Panel/SFXVol" to="." method="_on_sfx_vol_value_changed"]
+[connection signal="pressed" from="Panel/Save" to="." method="_on_save_pressed"]

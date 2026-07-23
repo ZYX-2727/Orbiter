@@ -12,3 +12,5 @@ signal bullets_collected
 signal points_collected(points: int)
 @warning_ignore("unused_signal")
 signal pause
+@warning_ignore("unused_signal")
+signal settings(paused: bool)
