@@ -11,6 +11,7 @@ var bull_collect_pre: PackedScene
 var point_collect_pre: PackedScene
 var playing: bool = false
 var first_time: bool
+var difficulty_mult: float
 
 var score: int = 0
 var high_score: int
@@ -54,11 +55,11 @@ func _ready() -> void:
 	$Menu/Panel/High.text = "High Score: " + str(high_score)
 	
 	bullet_objs = [
-	$HUD/Screen/Bullet1,
-	$HUD/Screen/Bullet2,
-	$HUD/Screen/Bullet3,
-	$HUD/Screen/Bullet4,
-	$HUD/Screen/Bullet5
+	$HUD/All/Bullet1,
+	$HUD/All/Bullet2,
+	$HUD/All/Bullet3,
+	$HUD/All/Bullet4,
+	$HUD/All/Bullet5
 	]
 	
 	bull_collect_pre = preload("res://scenes/bullet_collectable.tscn")
@@ -78,18 +79,17 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("pause") and playing:
-		EventBus.emit_signal("pause")
-	
 	if not paused:
+		if Input.is_action_just_pressed("pause") and playing:
+			EventBus.emit_signal("pause")
 		$Earth.rotation_degrees -= EARTH_COEFFICENT * delta
 	
 		if playing:
 			distance += delta * SPEED
-			$HUD/Screen/Distance.text = str(int(round(distance))) + " km"
+			$HUD/All/Distance.text = str(int(round(distance))) + " km"
 		
-			score = round(distance) + asteroids_destroyed * 10 + points_collected
-			$HUD/Screen/Score.text = str(score)
+			score = round(distance * difficulty_mult) + asteroids_destroyed * 10 + points_collected
+			$HUD/All/Score.text = str(score)
 		
 			if Input.is_action_just_pressed("shoot") and playing and $Player and bullets > 0:
 				var new_bullet = bullet_pre.instantiate()
@@ -129,10 +129,13 @@ func _on_death() -> void:
 func _on_start(difficulty: int) -> void:
 	if difficulty == 0:
 		between_asteroids = 2
+		difficulty_mult = 1
 	elif difficulty == 1:
 		between_asteroids = 1.5
+		difficulty_mult = 1.25
 	elif difficulty == 2:
 		between_asteroids = 1
+		difficulty_mult = 1.5
 	$AsteroidTimer.wait_time = between_asteroids
 	$AsteroidTimer.start() #Restart
 	$CollectableTimer.stop()

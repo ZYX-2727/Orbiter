@@ -1,40 +1,51 @@
 [gd_scene format=3 uid="uid://dqbsup6t2es2"]
 
+[ext_resource type="Script" uid="uid://5oid8td45g27" path="res://scripts/hud.gd" id="1_5ysmq"]
 [ext_resource type="FontFile" uid="uid://b2muai3i6vj2y" path="res://assets/Geo-Regular.ttf" id="1_ahhtf"]
+[ext_resource type="Texture2D" uid="uid://ba1fwhymivsap" path="res://assets/image(3).png" id="2_oo0fn"]
+
+[sub_resource type="GDScript" id="GDScript_6fi6k"]
+script/source = "extends TextureButton
+
+
+func _on_pressed() -> void:
+	EventBus.emit_signal(\"pause\")
+"
 
 [node name="HUD" type="CanvasLayer" unique_id=1192200779]
+script = ExtResource("1_5ysmq")
 
-[node name="Screen" type="ColorRect" parent="." unique_id=1580700331]
-offset_right = 1100.0
-offset_bottom = 650.0
-color = Color(1, 1, 1, 0)
+[node name="All" type="Control" parent="." unique_id=1458809999]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Score" type="Label" parent="Screen" unique_id=1390975104]
+[node name="Score" type="Label" parent="All" unique_id=1390975104]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
+offset_left = 510.0
+offset_right = 550.0
 offset_bottom = 78.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_ahhtf")
 theme_override_font_sizes/font_size = 75
 text = "0"
 
-[node name="Distance" type="Label" parent="Screen" unique_id=2092731676]
+[node name="Distance" type="Label" parent="All" unique_id=2092731676]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_top = 10.0
-offset_right = -20.0
-grow_horizontal = 0
+offset_left = 10.0
+offset_top = 50.0
+offset_right = 93.0
+offset_bottom = 102.0
 theme_override_fonts/font = ExtResource("1_ahhtf")
 theme_override_font_sizes/font_size = 50
 text = "0km"
 
-[node name="Bullet1" type="ColorRect" parent="Screen" unique_id=1058347366]
+[node name="Bullet1" type="ColorRect" parent="All" unique_id=1058347366]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 22.0
@@ -43,7 +54,7 @@ offset_bottom = 36.0
 rotation = 1.5707964
 size_flags_horizontal = 4
 
-[node name="Bullet2" type="ColorRect" parent="Screen" unique_id=454450265]
+[node name="Bullet2" type="ColorRect" parent="All" unique_id=454450265]
 layout_mode = 0
 offset_left = 42.0
 offset_top = 22.0
@@ -52,7 +63,7 @@ offset_bottom = 36.0
 rotation = 1.5707964
 size_flags_horizontal = 4
 
-[node name="Bullet3" type="ColorRect" parent="Screen" unique_id=2110237433]
+[node name="Bullet3" type="ColorRect" parent="All" unique_id=2110237433]
 layout_mode = 0
 offset_left = 60.0
 offset_top = 22.0
@@ -61,7 +72,7 @@ offset_bottom = 36.0
 rotation = 1.5707964
 size_flags_horizontal = 4
 
-[node name="Bullet4" type="ColorRect" parent="Screen" unique_id=1555992924]
+[node name="Bullet4" type="ColorRect" parent="All" unique_id=1555992924]
 layout_mode = 0
 offset_left = 78.0
 offset_top = 22.0
@@ -70,7 +81,7 @@ offset_bottom = 36.0
 rotation = 1.5707964
 size_flags_horizontal = 4
 
-[node name="Bullet5" type="ColorRect" parent="Screen" unique_id=284499554]
+[node name="Bullet5" type="ColorRect" parent="All" unique_id=284499554]
 layout_mode = 0
 offset_left = 96.0
 offset_top = 22.0
@@ -79,7 +90,7 @@ offset_bottom = 36.0
 rotation = 1.5707964
 size_flags_horizontal = 4
 
-[node name="Max" type="Label" parent="Screen/Bullet5" unique_id=2127605138]
+[node name="Max" type="Label" parent="All/Bullet5" unique_id=2127605138]
 layout_mode = 1
 anchors_preset = -1
 offset_left = -12.000001
@@ -90,3 +101,18 @@ rotation = -1.5707964
 theme_override_fonts/font = ExtResource("1_ahhtf")
 theme_override_font_sizes/font_size = 50
 text = "Max"
+
+[node name="Pause" type="TextureButton" parent="All" unique_id=113190725]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 963.0
+offset_right = 1410.0
+offset_bottom = 447.0
+grow_horizontal = 0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("2_oo0fn")
+script = SubResource("GDScript_6fi6k")
+
+[connection signal="pressed" from="All/Pause" to="." method="_on_pause_pressed"]

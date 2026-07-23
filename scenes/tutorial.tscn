@@ -1,7 +1,51 @@
 [gd_scene format=3 uid="uid://d0fx1oxhjgyni"]
 
+[ext_resource type="Texture2D" uid="uid://bqlmkdrfo6onb" path="res://assets/Screenshot from 2026-07-23 12-09-06.png" id="1_c13y7"]
+[ext_resource type="FontFile" uid="uid://b2muai3i6vj2y" path="res://assets/Geo-Regular.ttf" id="2_8ho6b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ph3nu"]
+bg_color = Color(0.65, 0.65, 0.65, 0.7294118)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
 [node name="Tutorial" type="Node2D" unique_id=1370340518]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1120726193]
-position = Vector2(532, 319)
-scale = Vector2(1.13879, 1.13879)
+[node name="Slide1" type="Sprite2D" parent="." unique_id=1120726193]
+position = Vector2(554.1317, 327.25803)
+scale = Vector2(1.0053767, 1.0053766)
+texture = ExtResource("1_c13y7")
+
+[node name="ColorRect" type="ColorRect" parent="Slide1" unique_id=1473688327]
+offset_left = -615.8206
+offset_top = -346.39563
+offset_right = 663.1794
+offset_bottom = 347.60437
+color = Color(0.32, 0.32, 0.32, 0.74509805)
+
+[node name="Panel" type="Panel" parent="Slide1" unique_id=751860774]
+offset_left = -281.61755
+offset_top = -83.8074
+offset_right = 365.6659
+offset_bottom = 149.93585
+theme_override_styles/panel = SubResource("StyleBoxFlat_ph3nu")
+
+[node name="Score" type="Label" parent="Slide1/Panel" unique_id=675022151]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -307.7273
+offset_top = 5.967883
+offset_right = 306.96777
+offset_bottom = 319.2834
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_8ho6b")
+theme_override_font_sizes/font_size = 50
+text = "Welcome to Orbiter, the space 
+sidescroller game where the 
+objective is simply to get as 
+many points as possible."
