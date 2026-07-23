@@ -8,3 +8,5 @@ signal start(difficulty: int)
 signal asteroid_destroyed
 @warning_ignore("unused_signal")
 signal bullets_collected
+@warning_ignore("unused_signal")
+signal pause

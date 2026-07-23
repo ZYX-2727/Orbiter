@@ -18,6 +18,7 @@ var asteroids_destroyed: int = 0
 var distance: float #In km
 const SPEED: float = 7.66 #km/s
 var bullets = 3
+var paused: bool = false
 
 var bullet_objs: Array
 
@@ -63,6 +64,7 @@ func _ready() -> void:
 	player_pre = preload("res://scenes/player.tscn")
 	bullet_pre = preload("res://scenes/bullet.tscn")
 	EventBus.connect("death", _on_death)
+	EventBus.connect("pause", _on_pause)
 	EventBus.connect("start", _on_start)
 	EventBus.connect("bullets_collected", _on_bullets_collected)
 	EventBus.connect("asteroid_destroyed", _on_asteroid_destroyed)
@@ -72,23 +74,27 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$Earth.rotation_degrees -= EARTH_COEFFICENT * delta
+	if Input.is_action_just_pressed("pause") and playing:
+		EventBus.emit_signal("pause")
 	
-	if playing:
-		distance += delta * SPEED
-		$HUD/Screen/Distance.text = str(int(round(distance))) + " km"
+	if not paused:
+		$Earth.rotation_degrees -= EARTH_COEFFICENT * delta
+	
+		if playing:
+			distance += delta * SPEED
+			$HUD/Screen/Distance.text = str(int(round(distance))) + " km"
 		
-		score = round(distance) + asteroids_destroyed * 10
-		$HUD/Screen/Score.text = str(score)
+			score = round(distance) + asteroids_destroyed * 10
+			$HUD/Screen/Score.text = str(score)
 		
-		if Input.is_action_just_pressed("shoot") and playing and $Player and bullets > 0:
-			var new_bullet = bullet_pre.instantiate()
-			new_bullet.position = $Player.position + 100 * Vector2.RIGHT#.rotated(deg_to_rad($Player.rotation_degrees))
-			new_bullet.rotation_degrees = $Player.rotation_degrees - 90
-			add_child(new_bullet)
+			if Input.is_action_just_pressed("shoot") and playing and $Player and bullets > 0:
+				var new_bullet = bullet_pre.instantiate()
+				new_bullet.position = $Player.position + 100 * Vector2.RIGHT#.rotated(deg_to_rad($Player.rotation_degrees))
+				new_bullet.rotation_degrees = $Player.rotation_degrees - 90
+				add_child(new_bullet)
 			
-			bullets -= 1
-			adjust_bullet_hud()
+				bullets -= 1
+				adjust_bullet_hud()
 
 
 func _on_death() -> void:
@@ -144,8 +150,6 @@ func _on_asteroid_timer_timeout() -> void:
 	add_child(new_asteroid)
 	
 	if 1 == randi_range(1, 5):
-		print(between_asteroids)
-		print(between_asteroids/2)
 		$BulletTimer.wait_time = between_asteroids/2
 		$BulletTimer.start()
 
@@ -154,6 +158,12 @@ func _on_bullet_timer_timeout() -> void:
 	var new_bull_collect = bull_collect_pre.instantiate()
 	new_bull_collect.position = Vector2(1200, randi_range(0, 650))
 	add_child(new_bull_collect)
+
+
+func _on_pause() -> void:
+	paused = not paused
+	$AsteroidTimer.paused = paused
+	$BulletTimer.paused = paused
 
 
 func _on_bullets_collected() -> void:

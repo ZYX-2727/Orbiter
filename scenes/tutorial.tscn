@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://d0fx1oxhjgyni"]
+
+[node name="Tutorial" type="Node2D" unique_id=1370340518]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1120726193]
+position = Vector2(532, 319)
+scale = Vector2(1.13879, 1.13879)

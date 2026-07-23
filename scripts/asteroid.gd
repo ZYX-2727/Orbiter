@@ -4,6 +4,7 @@ const SPEED = 350
 var SCALE
 var ROTATION
 var destroyed
+var paused
 
 func _ready() -> void:
 	#SPEED = 200
@@ -11,18 +12,20 @@ func _ready() -> void:
 	scale = Vector2(SCALE, SCALE)
 	ROTATION = randf_range(-3, 3)
 	EventBus.connect("start", _on_start)
+	EventBus.connect("pause", _on_pause)
 
 func _physics_process(delta: float) -> void:
-	if destroyed:
-		if has_node("Texture"):
-			$CollisionShape2D.queue_free()
-			$Texture.queue_free()
-			rotation_degrees = 0
-			scale = Vector2(1, 1)
-			$Timer.start()
-	else:
-		rotation_degrees += ROTATION
-		position.x -= SPEED * delta
+	if not paused:
+		if destroyed:
+			if has_node("Texture"):
+				$CollisionShape2D.queue_free()
+				$Texture.queue_free()
+				rotation_degrees = 0
+				scale = Vector2(1, 1)
+				$Timer.start()
+		else:
+			rotation_degrees += ROTATION
+			position.x -= SPEED * delta
 
 
 func _on_body_entered(body: Node2D) -> void:
@@ -32,6 +35,9 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_start(_difficulty: int) -> void:
 	queue_free()
 
+func _on_pause() -> void:
+	paused = not paused
+	$Timer.paused = paused
 
 func _on_timer_timeout() -> void:
 	queue_free()
