@@ -43,3 +43,13 @@ scale = Vector2(2.1129653, 2.1129653)
 texture = ExtResource("5_tbgi4")
 
 [node name="Menu" parent="." unique_id=686618189 instance=ExtResource("3_sugp2")]
+
+[node name="AsteroidTimer" type="Timer" parent="." unique_id=794957879]
+wait_time = 1.5
+autostart = true
+
+[node name="BulletTimer" type="Timer" parent="." unique_id=1031630865]
+one_shot = true
+
+[connection signal="timeout" from="AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]
+[connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout"]

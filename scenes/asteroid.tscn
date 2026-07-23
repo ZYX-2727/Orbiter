@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://hipn7pim1u0e" path="res://scripts/asteroid.gd" id="1_6mo6b"]
 [ext_resource type="Texture2D" uid="uid://bxp1aiq7wsiok" path="res://assets/ast-removebg-preview.png" id="1_akfqu"]
+[ext_resource type="FontFile" uid="uid://b2muai3i6vj2y" path="res://assets/Geo-Regular.ttf" id="2_t4se3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_akfqu"]
 radius = 140.22838
@@ -9,10 +10,24 @@ radius = 140.22838
 [node name="Asteroid" type="Area2D" unique_id=9759962]
 script = ExtResource("1_6mo6b")
 
+[node name="Points" type="Label" parent="." unique_id=1875263771]
+offset_left = -44.0
+offset_top = -35.0
+offset_right = 45.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_t4se3")
+theme_override_font_sizes/font_size = 60
+text = "+20"
+
 [node name="Texture" type="Sprite2D" parent="." unique_id=269983257]
 texture = ExtResource("1_akfqu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=819549231]
 shape = SubResource("CircleShape2D_akfqu")
 
+[node name="Timer" type="Timer" parent="." unique_id=1529998711]
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

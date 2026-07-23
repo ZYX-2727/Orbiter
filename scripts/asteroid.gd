@@ -14,10 +14,15 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if destroyed:
-		queue_free()
-	
-	rotation_degrees += ROTATION
-	position.x -= SPEED * delta
+		if has_node("Texture"):
+			$CollisionShape2D.queue_free()
+			$Texture.queue_free()
+			rotation_degrees = 0
+			scale = Vector2(1, 1)
+			$Timer.start()
+	else:
+		rotation_degrees += ROTATION
+		position.x -= SPEED * delta
 
 
 func _on_body_entered(body: Node2D) -> void:
@@ -25,4 +30,8 @@ func _on_body_entered(body: Node2D) -> void:
 		EventBus.emit_signal("death")
 
 func _on_start(_difficulty: int) -> void:
+	queue_free()
+
+
+func _on_timer_timeout() -> void:
 	queue_free()

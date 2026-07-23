@@ -3,7 +3,6 @@ extends Node2D
 var EARTH_COEFFICENT = 0.2 #360/(90 * 60)
 #360/(time secs) = earth coefficent, so 90 mins would be ^
 
-var time_passed: float = 0
 var between_asteroids = 1.5
 var asteroid_pre: PackedScene
 var player_pre: PackedScene
@@ -70,12 +69,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	time_passed += delta
-	if time_passed > between_asteroids:
-		time_passed -= between_asteroids
-		var new_asteroid = asteroid_pre.instantiate()
-		new_asteroid.position = Vector2(1200, randi_range(50, 600))
-		add_child(new_asteroid)
 	$Earth.rotation_degrees -= EARTH_COEFFICENT * delta
 	
 	if playing:
@@ -126,6 +119,8 @@ func _on_start(difficulty: int) -> void:
 		between_asteroids = 1.5
 	elif difficulty == 2:
 		between_asteroids = 1
+	$AsteroidTimer.wait_time = between_asteroids
+	$AsteroidTimer.start() #Restart
 	
 	playing = true
 	$HUD.show()
@@ -137,3 +132,16 @@ func _on_start(difficulty: int) -> void:
 
 func _on_asteroid_destroyed() -> void:
 	asteroids_destroyed += 1
+
+
+func _on_asteroid_timer_timeout() -> void:
+	var new_asteroid = asteroid_pre.instantiate()
+	new_asteroid.position = Vector2(1200, randi_range(50, 600))
+	add_child(new_asteroid)
+	
+	$BulletTimer.start()
+	$BulletTimer.wait_time = between_asteroids/2
+
+
+func _on_bullet_timer_timeout() -> void:
+	pass # Replace with function body.
