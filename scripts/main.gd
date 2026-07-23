@@ -49,7 +49,7 @@ func adjust_bullet_hud() -> void:
 			bullet_obj.hide()
 
 
-func change_via_settings() -> void: #Change the game based on what settings you have
+func change_via_settings(_paused: bool) -> void: #Change the game based on what settings you have
 	var data = ConfigFile.new()
 	var error = data.load("user://data.cfg")
 	if error:
@@ -59,13 +59,14 @@ func change_via_settings() -> void: #Change the game based on what settings you 
 	sfx_vol = data.get_value("settings", "sfx_vol", 100)
 	default_difficulty = data.get_value("settings", "default_difficulty", 1)
 	high_score = data.get_value("player", "high_score", 0)
+	
+	$Menu/Panel/Difficulty.selected = default_difficulty
+	$Menu/Panel/High.text = "High Score: " + str(high_score)
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	change_via_settings()
-	$Menu/Panel/Difficulty.selected = default_difficulty
-	$Menu/Panel/High.text = "High Score: " + str(high_score)
+	change_via_settings(false)
 	
 	bullet_objs = [
 	$HUD/All/Bullet1,
@@ -83,6 +84,7 @@ func _ready() -> void:
 	EventBus.connect("death", _on_death)
 	EventBus.connect("pause", _on_pause)
 	EventBus.connect("start", _on_start)
+	EventBus.connect("settings", change_via_settings)
 	EventBus.connect("bullets_collected", _on_bullets_collected)
 	EventBus.connect("points_collected", _on_points_collected)
 	EventBus.connect("asteroid_destroyed", _on_asteroid_destroyed)

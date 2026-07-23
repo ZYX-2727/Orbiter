@@ -68,15 +68,32 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -151.5
-offset_top = -50.0
-offset_right = 151.5
-offset_bottom = 36.0
+offset_left = -151.0
+offset_top = -77.0
+offset_right = 152.0
+offset_bottom = 9.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_yqeox")
 theme_override_font_sizes/font_size = 75
 text = "Play"
+
+[node name="Settings" type="Button" parent="Panel" unique_id=532180292]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = 120.0
+offset_right = 152.0
+offset_bottom = 206.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_yqeox")
+theme_override_font_sizes/font_size = 75
+text = "Settings"
 
 [node name="Difficulty" type="OptionButton" parent="Panel" unique_id=361618502]
 layout_mode = 1
@@ -85,10 +102,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -151.5
-offset_top = 50.0
-offset_right = 151.5
-offset_bottom = 136.0
+offset_left = -151.0
+offset_top = 22.0
+offset_right = 152.0
+offset_bottom = 108.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_yqeox")
@@ -103,3 +120,4 @@ popup/item_2/text = "Hard"
 popup/item_2/id = 2
 
 [connection signal="pressed" from="Panel/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Panel/Settings" to="." method="_on_settings_pressed"]
