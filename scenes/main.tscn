@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cq12sjosj4f3k" path="res://assets/ipcc_bluemarble_west_lrg.jpg" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bv4vx3cc8h0vq" path="res://scenes/pause_menu.tscn" id="5_tefeu"]
 [ext_resource type="PackedScene" uid="uid://vtr0ix01tdqu" path="res://scenes/settings.tscn" id="6_tefeu"]
+[ext_resource type="AudioStream" uid="uid://t45k8q0bm2gg" path="res://assets/sonican-cinematic-space-ambient-post-rock-loop-starlight-echoes-439169.mp3" id="7_o6xl0"]
 
 [node name="Main" type="Node2D" unique_id=898456584]
 script = ExtResource("1_0wfyh")
@@ -39,6 +40,10 @@ autostart = true
 
 [node name="CollectableTimer" type="Timer" parent="." unique_id=1031630865]
 one_shot = true
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=2006140783]
+stream = ExtResource("7_o6xl0")
+autoplay = true
 
 [connection signal="timeout" from="AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]
 [connection signal="timeout" from="CollectableTimer" to="." method="_on_collect_timer_timeout"]

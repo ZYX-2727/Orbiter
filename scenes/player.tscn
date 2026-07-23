@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cmew5xorw05pq" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bbsqaodf8p718" path="res://assets/space-shuttle-rocket-3d-realistic-vector-40780639-removebg-preview.png" id="2_g2els"]
+[ext_resource type="AudioStream" uid="uid://bse0wwlil6wq0" path="res://assets/freesound_community-065110_seamless-rocket-booster-roar-amp-crackle-42487.mp3" id="3_qhqgy"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_qhqgy"]
 points = PackedVector2Array(0.49999496, -115.5, 70.50001, 113.5, -69.49999, 113.5)
@@ -34,3 +35,6 @@ amount = 12
 one_shot = true
 explosiveness = 0.47
 process_material = SubResource("ParticleProcessMaterial_g2els")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1249711481]
+stream = ExtResource("3_qhqgy")

@@ -62,6 +62,7 @@ func change_via_settings(_paused: bool) -> void: #Change the game based on what 
 	
 	$Menu/Panel/Difficulty.selected = default_difficulty
 	$Menu/Panel/High.text = "High Score: " + str(high_score)
+	$Music.volume_linear = music_vol/100
 
 
 # Called when the node enters the scene tree for the first time.
