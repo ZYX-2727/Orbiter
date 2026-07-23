@@ -6,3 +6,5 @@ signal death
 signal start(difficulty: int)
 @warning_ignore("unused_signal")
 signal asteroid_destroyed
+@warning_ignore("unused_signal")
+signal bullets_collected

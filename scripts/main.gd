@@ -3,10 +3,11 @@ extends Node2D
 var EARTH_COEFFICENT = 0.2 #360/(90 * 60)
 #360/(time secs) = earth coefficent, so 90 mins would be ^
 
-var between_asteroids = 1.5
+var between_asteroids: float = 1.5
 var asteroid_pre: PackedScene
 var player_pre: PackedScene
 var bullet_pre: PackedScene
+var bull_collect_pre: PackedScene
 var playing: bool = false
 var first_time: bool
 
@@ -57,11 +58,13 @@ func _ready() -> void:
 	$HUD/Screen/Bullet5
 	]
 	
+	bull_collect_pre = preload("res://scenes/bullet_collectable.tscn")
 	asteroid_pre = preload("res://scenes/asteroid.tscn")
 	player_pre = preload("res://scenes/player.tscn")
 	bullet_pre = preload("res://scenes/bullet.tscn")
 	EventBus.connect("death", _on_death)
 	EventBus.connect("start", _on_start)
+	EventBus.connect("bullets_collected", _on_bullets_collected)
 	EventBus.connect("asteroid_destroyed", _on_asteroid_destroyed)
 	$Menu.z_index = 1000
 	$HUD.hide()
@@ -92,6 +95,7 @@ func _on_death() -> void:
 	playing = false
 	
 	#Display
+	$BulletTimer.stop()
 	$HUD.hide()
 	$Menu.show()
 	$Menu/Panel/Score.text = "Score: " + str(score)
@@ -136,12 +140,22 @@ func _on_asteroid_destroyed() -> void:
 
 func _on_asteroid_timer_timeout() -> void:
 	var new_asteroid = asteroid_pre.instantiate()
-	new_asteroid.position = Vector2(1200, randi_range(50, 600))
+	new_asteroid.position = Vector2(1200, randi_range(0, 650))
 	add_child(new_asteroid)
 	
-	$BulletTimer.start()
-	$BulletTimer.wait_time = between_asteroids/2
+	if 1 == randi_range(1, 5):
+		print(between_asteroids)
+		print(between_asteroids/2)
+		$BulletTimer.wait_time = between_asteroids/2
+		$BulletTimer.start()
 
 
 func _on_bullet_timer_timeout() -> void:
-	pass # Replace with function body.
+	var new_bull_collect = bull_collect_pre.instantiate()
+	new_bull_collect.position = Vector2(1200, randi_range(0, 650))
+	add_child(new_bull_collect)
+
+
+func _on_bullets_collected() -> void:
+	bullets = clamp(bullets + 3, 0, 5)
+	adjust_bullet_hud()

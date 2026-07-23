@@ -21,6 +21,10 @@ func _physics_process(delta: float) -> void:
 	if position.x != 231:
 		EventBus.emit_signal("death")
 	
+	#Handle too low or too high
+	if position.y < 0 or position.y > 650:
+		EventBus.emit_signal("death")
+	
 	#if not is_on_floor() and not is_on_ceiling():
 	rotation_degrees = (velocity.y / 20) + 90
 

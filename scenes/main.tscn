@@ -5,27 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://b1d8oy20j5d1r" path="res://scenes/menu.tscn" id="3_sugp2"]
 [ext_resource type="Texture2D" uid="uid://cq12sjosj4f3k" path="res://assets/ipcc_bluemarble_west_lrg.jpg" id="5_tbgi4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
-size = Vector2(1160, 20)
-
 [node name="Main" type="Node2D" unique_id=898456584]
 script = ExtResource("1_0wfyh")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1267752061]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1700639126]
-position = Vector2(537, -9)
-shape = SubResource("RectangleShape2D_o5qli")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1218814502]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1343456613]
-position = Vector2(516, 658)
-shape = SubResource("RectangleShape2D_o5qli")
 
 [node name="HUD" parent="." unique_id=1192200779 instance=ExtResource("2_sugp2")]
 

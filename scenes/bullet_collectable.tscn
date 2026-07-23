@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://c5uyv1ldcs651"]
+
+[ext_resource type="Script" uid="uid://76a2aoa3vwau" path="res://scripts/bullet_collectable.gd" id="1_bq6ah"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umph0"]
+size = Vector2(84, 54)
+
+[node name="BulletCollectable" type="Area2D" unique_id=377116890]
+collision_layer = 4
+script = ExtResource("1_bq6ah")
+
+[node name="Texture" type="Sprite2D" parent="." unique_id=524875276]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1367453927]
+shape = SubResource("RectangleShape2D_umph0")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1372806422]
+offset_left = 12.0
+offset_top = -24.0
+offset_right = 28.0
+offset_bottom = -16.0
+rotation = 1.5707964
+scale = Vector2(3, 3)
+size_flags_horizontal = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=753446483]
+offset_left = 39.0
+offset_top = -24.0
+offset_right = 55.0
+offset_bottom = -16.0
+rotation = 1.5707964
+scale = Vector2(3, 3)
+size_flags_horizontal = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=1811574291]
+offset_left = -15.0
+offset_top = -24.000002
+offset_right = 1.0
+offset_bottom = -16.000002
+rotation = 1.5707964
+scale = Vector2(3, 3)
+size_flags_horizontal = 4
+metadata/_edit_use_anchors_ = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
