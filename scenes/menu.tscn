@@ -14,10 +14,10 @@ corner_radius_bottom_left = 30
 script = ExtResource("1_vjb58")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1186990298]
-offset_left = -43.0
-offset_top = -26.0
-offset_right = 1236.0
-offset_bottom = 668.0
+offset_left = -420.0
+offset_top = -288.0
+offset_right = 1655.0
+offset_bottom = 979.0
 color = Color(0.32, 0.32, 0.32, 0.74509805)
 
 [node name="Panel" type="Panel" parent="." unique_id=925966109]

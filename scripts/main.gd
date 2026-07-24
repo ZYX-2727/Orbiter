@@ -63,6 +63,8 @@ func change_via_settings(_paused: bool) -> void: #Change the game based on what 
 	$Menu/Panel/Difficulty.selected = default_difficulty
 	$Menu/Panel/High.text = "High Score: " + str(high_score)
 	$Music.volume_linear = music_vol/100
+	$Collect.volume_linear = sfx_vol/100
+	$Asteroid.volume_linear = sfx_vol/30
 
 
 # Called when the node enters the scene tree for the first time.
@@ -166,6 +168,7 @@ func _on_start(difficulty: int) -> void:
 
 func _on_asteroid_destroyed() -> void:
 	asteroids_destroyed += 1
+	$Asteroid.play()
 
 
 func _on_asteroid_timer_timeout() -> void:
@@ -198,6 +201,8 @@ func _on_pause() -> void:
 func _on_bullets_collected() -> void:
 	bullets = clamp(bullets + 3, 0, 5)
 	adjust_bullet_hud()
+	$Collect.play()
 
 func _on_points_collected(points: int) -> void:
 	points_collected += points
+	$Collect.play()

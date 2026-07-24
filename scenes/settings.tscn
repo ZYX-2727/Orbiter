@@ -26,10 +26,10 @@ corner_detail = 6
 script = ExtResource("1_r6d6q")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=720980524]
-offset_left = -43.0
-offset_top = -26.0
-offset_right = 1236.0
-offset_bottom = 668.0
+offset_left = -275.0
+offset_top = -242.0
+offset_right = 1471.0
+offset_bottom = 953.0
 color = Color(0.32, 0.32, 0.32, 0.74509805)
 
 [node name="Panel" type="Panel" parent="." unique_id=401589735]

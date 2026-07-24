@@ -14,10 +14,10 @@ corner_radius_bottom_left = 30
 script = ExtResource("1_myx47")
 
 [node name="Greyout" type="ColorRect" parent="." unique_id=1920566725]
-offset_left = -43.0
-offset_top = -26.0
-offset_right = 1236.0
-offset_bottom = 668.0
+offset_left = -354.0
+offset_top = -293.0
+offset_right = 1542.0
+offset_bottom = 966.0
 color = Color(0.32, 0.32, 0.32, 0.74509805)
 
 [node name="Panel" type="Panel" parent="." unique_id=781628413]
