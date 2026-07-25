@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://2umhnokermeg" path="res://scripts/menu.gd" id="1_vjb58"]
 [ext_resource type="FontFile" uid="uid://b2muai3i6vj2y" path="res://assets/Geo-Regular.ttf" id="1_yqeox"]
+[ext_resource type="Texture2D" uid="uid://d2mvfqf72piui" path="res://assets/Screenshot_from_2026-07-24_13-03-07-removebg-preview.png" id="3_con2f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqeox"]
 bg_color = Color(0.65, 0.65, 0.65, 0.7294118)
@@ -78,23 +79,6 @@ theme_override_fonts/font = ExtResource("1_yqeox")
 theme_override_font_sizes/font_size = 75
 text = "Play"
 
-[node name="Settings" type="Button" parent="Panel" unique_id=532180292]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -151.0
-offset_top = 120.0
-offset_right = 152.0
-offset_bottom = 206.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_yqeox")
-theme_override_font_sizes/font_size = 75
-text = "Settings"
-
 [node name="Difficulty" type="OptionButton" parent="Panel" unique_id=361618502]
 layout_mode = 1
 anchors_preset = 8
@@ -119,5 +103,39 @@ popup/item_1/id = 1
 popup/item_2/text = "Hard"
 popup/item_2/id = 2
 
+[node name="Settings" type="Button" parent="Panel" unique_id=532180292]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = 120.0
+offset_right = 152.0
+offset_bottom = 206.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_yqeox")
+theme_override_font_sizes/font_size = 75
+text = "Settings"
+
+[node name="MoreGames" type="TextureButton" parent="Panel" unique_id=451717006]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -55.0
+offset_right = 171.97675
+offset_bottom = 52.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("3_con2f")
+stretch_mode = 0
+
 [connection signal="pressed" from="Panel/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Panel/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Panel/MoreGames" to="." method="_on_more_games_pressed"]

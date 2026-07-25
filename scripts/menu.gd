@@ -19,3 +19,7 @@ func _on_settings(paused: bool) -> void:
 		show()
 	else:
 		hide()
+
+
+func _on_more_games_pressed() -> void:
+	OS.shell_open("https://zyx-2727.itch.io")

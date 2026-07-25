@@ -14,3 +14,5 @@ signal points_collected(points: int)
 signal pause
 @warning_ignore("unused_signal")
 signal settings(paused: bool)
+@warning_ignore("unused_signal")
+signal tutorial_done

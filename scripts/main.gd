@@ -7,10 +7,11 @@ var between_asteroids: float = 1.5
 var asteroid_pre: PackedScene
 var player_pre: PackedScene
 var bullet_pre: PackedScene
+var tutorial_pre: PackedScene
 var bull_collect_pre: PackedScene
 var point_collect_pre: PackedScene
 var playing: bool = false
-var first_time: bool
+var first_time: bool = false
 var difficulty_mult: float
 
 var music_vol
@@ -54,6 +55,8 @@ func change_via_settings(_paused: bool) -> void: #Change the game based on what 
 	var error = data.load("user://data.cfg")
 	if error:
 		print(error)
+		#First time(possible)
+		first_time = true
 	
 	music_vol = data.get_value("settings", "music_vol", 100)
 	sfx_vol = data.get_value("settings", "sfx_vol", 100)
@@ -84,22 +87,32 @@ func _ready() -> void:
 	asteroid_pre = preload("res://scenes/asteroid.tscn")
 	player_pre = preload("res://scenes/player.tscn")
 	bullet_pre = preload("res://scenes/bullet.tscn")
+	tutorial_pre = preload("res://scenes/tutorial.tscn")
 	EventBus.connect("death", _on_death)
 	EventBus.connect("pause", _on_pause)
 	EventBus.connect("start", _on_start)
+	EventBus.connect("tutorial_done", _on_tutorial_done)
 	EventBus.connect("settings", change_via_settings)
 	EventBus.connect("bullets_collected", _on_bullets_collected)
 	EventBus.connect("points_collected", _on_points_collected)
 	EventBus.connect("asteroid_destroyed", _on_asteroid_destroyed)
 	$Menu.z_index = 1000
 	$HUD.hide()
+	
+	if first_time:
+		var new_tutorial = tutorial_pre.instantiate()
+		new_tutorial.position = Vector2(-5, -5)
+		$Menu.hide()
+		new_tutorial.z_index = 1001
+		add_child(new_tutorial)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if not paused:
-		if Input.is_action_just_pressed("pause") and playing:
+	if Input.is_action_just_pressed("pause") and playing:
 			EventBus.emit_signal("pause")
+	
+	if not paused:
 		$Earth.rotation_degrees -= EARTH_COEFFICENT * delta
 	
 		if playing:
@@ -196,6 +209,10 @@ func _on_pause() -> void:
 	paused = not paused
 	$AsteroidTimer.paused = paused
 	$CollectableTimer.paused = paused
+
+
+func _on_tutorial_done() -> void:
+	$Menu.show()
 
 
 func _on_bullets_collected() -> void:

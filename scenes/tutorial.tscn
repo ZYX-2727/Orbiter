@@ -1,35 +1,250 @@
 [gd_scene format=3 uid="uid://d0fx1oxhjgyni"]
 
-[ext_resource type="Texture2D" uid="uid://bqlmkdrfo6onb" path="res://assets/Screenshot from 2026-07-23 12-09-06.png" id="1_c13y7"]
+[ext_resource type="Texture2D" uid="uid://boqpydy4p82ic" path="res://assets/Screenshot from 2026-07-25 14-05-56.png" id="1_6yjpi"]
+[ext_resource type="Script" uid="uid://mpyycy2j2ymd" path="res://scripts/tutorial.gd" id="1_ckvwl"]
+[ext_resource type="Texture2D" uid="uid://1w2ri4c633f7" path="res://assets/Screenshot from 2026-07-24 13-14-45.png" id="1_ph3nu"]
 [ext_resource type="FontFile" uid="uid://b2muai3i6vj2y" path="res://assets/Geo-Regular.ttf" id="2_8ho6b"]
+[ext_resource type="Texture2D" uid="uid://bv1xrko8sfim4" path="res://assets/Screenshot from 2026-07-24 13-15-14.png" id="3_4kmhl"]
+[ext_resource type="Texture2D" uid="uid://xb0hkx0sx72u" path="res://assets/Screenshot from 2026-07-24 13-21-29.png" id="3_cq4me"]
+[ext_resource type="Texture2D" uid="uid://b4f74oeepa1h2" path="res://assets/Screenshot from 2026-07-25 14-10-00.png" id="3_gbqnl"]
+[ext_resource type="Texture2D" uid="uid://c1apbmjpd8oua" path="res://assets/Screenshot from 2026-07-24 13-29-21.png" id="5_cq4me"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ph3nu"]
-bg_color = Color(0.65, 0.65, 0.65, 0.7294118)
+bg_color = Color(0.6509804, 0.6509804, 0.6509804, 1)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
 [node name="Tutorial" type="Node2D" unique_id=1370340518]
+script = ExtResource("1_ckvwl")
+
+[node name="Slide7" type="Sprite2D" parent="." unique_id=1666860807]
+position = Vector2(554.1317, 327.25803)
+scale = Vector2(1.0053767, 1.0053766)
+texture = ExtResource("1_ph3nu")
+
+[node name="Panel" type="Panel" parent="Slide7" unique_id=1643138632]
+anchors_preset = -1
+anchor_right = 0.094597585
+offset_left = -490.4945
+offset_top = 56.438538
+offset_right = 156.78894
+offset_bottom = 290.1818
+theme_override_styles/panel = SubResource("StyleBoxFlat_ph3nu")
+metadata/_edit_use_anchors_ = true
+
+[node name="Score" type="Label" parent="Slide7/Panel" unique_id=57851219]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -307.7273
+offset_top = 5.967883
+offset_right = 306.96777
+offset_bottom = 319.2834
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_8ho6b")
+theme_override_font_sizes/font_size = 50
+text = "I hope you enjoy my game :)
+Its my first, so I would 
+appreciate feedback on my 
+itch page, or wherever you find this!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Slide6" type="Sprite2D" parent="." unique_id=883268274]
+position = Vector2(554.1317, 327.25803)
+scale = Vector2(1.0053768, 1.0053767)
+texture = ExtResource("3_gbqnl")
+
+[node name="Panel" type="Panel" parent="Slide6" unique_id=653382001]
+anchors_preset = -1
+anchor_top = -0.0929156
+anchor_right = 0.025158172
+anchor_bottom = -0.09291559
+offset_left = -156.29138
+offset_top = 114.12836
+offset_right = 512.11487
+offset_bottom = 352.84494
+theme_override_styles/panel = SubResource("StyleBoxFlat_ph3nu")
+metadata/_edit_use_anchors_ = true
+
+[node name="Score" type="Label" parent="Slide6/Panel" unique_id=1842624217]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.46000013
+anchor_top = 0.009112037
+anchor_right = 0.6754379
+anchor_bottom = 0.009112067
+offset_left = -308.3422
+offset_top = 7.957248
+offset_right = 312.65784
+offset_bottom = 255.62567
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_8ho6b")
+theme_override_font_sizes/font_size = 50
+text = "One last thing: point collectables.
+For more points,touch the 
+collectable to get the  amount 
+displayed."
+metadata/_edit_use_anchors_ = true
+
+[node name="Slide5" type="Sprite2D" parent="." unique_id=88431048]
+position = Vector2(554.1317, 327.25803)
+scale = Vector2(1.0053768, 1.0053767)
+texture = ExtResource("1_6yjpi")
+
+[node name="Panel" type="Panel" parent="Slide5" unique_id=1892571110]
+anchors_preset = -1
+anchor_top = -0.0929156
+anchor_right = 0.025158172
+anchor_bottom = -0.09291559
+offset_left = -156.29138
+offset_top = 114.12836
+offset_right = 512.11487
+offset_bottom = 352.84494
+theme_override_styles/panel = SubResource("StyleBoxFlat_ph3nu")
+metadata/_edit_use_anchors_ = true
+
+[node name="Score" type="Label" parent="Slide5/Panel" unique_id=479207121]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.46000013
+anchor_top = 0.009112037
+anchor_right = 0.6754379
+anchor_bottom = 0.009112067
+offset_left = -308.3422
+offset_top = 7.957248
+offset_right = 312.65784
+offset_bottom = 255.62567
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_8ho6b")
+theme_override_font_sizes/font_size = 50
+text = "You are limited by your amount of
+bullets (displayed in top-left.) To
+get more bullets, simply touch
+the bullet collectable to get +3"
+metadata/_edit_use_anchors_ = true
+
+[node name="Slide4" type="Sprite2D" parent="." unique_id=1288495844]
+position = Vector2(554.1317, 327.25803)
+scale = Vector2(1.0053767, 1.0053766)
+texture = ExtResource("5_cq4me")
+
+[node name="Panel" type="Panel" parent="Slide4" unique_id=204035051]
+anchors_preset = -1
+anchor_bottom = -0.0929156
+offset_left = -156.29138
+offset_top = 114.12836
+offset_right = 512.11487
+offset_bottom = 352.84494
+theme_override_styles/panel = SubResource("StyleBoxFlat_ph3nu")
+metadata/_edit_use_anchors_ = true
+
+[node name="Score" type="Label" parent="Slide4/Panel" unique_id=171231305]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -308.3422
+offset_top = 7.957248
+offset_right = 312.65784
+offset_bottom = 255.62567
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_8ho6b")
+theme_override_font_sizes/font_size = 50
+text = "If you want to destroy an 
+asteroid (and gain some points,)
+click space to shoot. "
+metadata/_edit_use_anchors_ = true
+
+[node name="Slide3" type="Sprite2D" parent="." unique_id=1839862141]
+position = Vector2(554.1317, 327.25803)
+scale = Vector2(1.0053767, 1.0053766)
+texture = ExtResource("3_cq4me")
+
+[node name="Panel" type="Panel" parent="Slide3" unique_id=1912491423]
+anchors_preset = -1
+anchor_left = -0.03176351
+offset_left = -151.31812
+offset_top = 50.470642
+offset_right = 517.08813
+offset_bottom = 289.18723
+theme_override_styles/panel = SubResource("StyleBoxFlat_ph3nu")
+metadata/_edit_use_anchors_ = true
+
+[node name="Score" type="Label" parent="Slide3/Panel" unique_id=666620235]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -308.3422
+offset_top = 7.957248
+offset_right = 312.65784
+offset_bottom = 255.62567
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_8ho6b")
+theme_override_font_sizes/font_size = 50
+text = "Distance is the primary way to 
+gain points in orbiter. To move,
+click to go up, release to go down, 
+and try to avoid the asteroids!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Slide2" type="Sprite2D" parent="." unique_id=1404340950]
+position = Vector2(554.1317, 327.25803)
+scale = Vector2(1.0053767, 1.0053766)
+texture = ExtResource("3_4kmhl")
+
+[node name="Panel" type="Panel" parent="Slide2" unique_id=775323919]
+offset_left = -159.27533
+offset_top = 123.08026
+offset_right = 530.0186
+offset_bottom = 306.09625
+theme_override_styles/panel = SubResource("StyleBoxFlat_ph3nu")
+metadata/_edit_use_anchors_ = true
+
+[node name="Score" type="Label" parent="Slide2/Panel" unique_id=1770803498]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -326.74323
+offset_top = 5.967883
+offset_right = 328.2568
+offset_bottom = 319.2834
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_8ho6b")
+theme_override_font_sizes/font_size = 50
+text = "First, you'll want to select your 
+difficulty. Harder difficulties 
+award more points per kilometer"
+metadata/_edit_use_anchors_ = true
 
 [node name="Slide1" type="Sprite2D" parent="." unique_id=1120726193]
 position = Vector2(554.1317, 327.25803)
 scale = Vector2(1.0053767, 1.0053766)
-texture = ExtResource("1_c13y7")
-
-[node name="ColorRect" type="ColorRect" parent="Slide1" unique_id=1473688327]
-offset_left = -615.8206
-offset_top = -346.39563
-offset_right = 663.1794
-offset_bottom = 347.60437
-color = Color(0.32, 0.32, 0.32, 0.74509805)
+texture = ExtResource("1_ph3nu")
 
 [node name="Panel" type="Panel" parent="Slide1" unique_id=751860774]
-offset_left = -281.61755
-offset_top = -83.8074
-offset_right = 365.6659
-offset_bottom = 149.93585
+offset_left = -490.4945
+offset_top = 56.438538
+offset_right = 156.78894
+offset_bottom = 290.1818
 theme_override_styles/panel = SubResource("StyleBoxFlat_ph3nu")
+metadata/_edit_use_anchors_ = true
 
 [node name="Score" type="Label" parent="Slide1/Panel" unique_id=675022151]
 layout_mode = 1
@@ -49,3 +264,22 @@ text = "Welcome to Orbiter, the space
 sidescroller game where the 
 objective is simply to get as 
 many points as possible."
+metadata/_edit_use_anchors_ = true
+
+[node name="Controls" type="Label" parent="Slide1" unique_id=159318379]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -347.2113
+offset_top = 133.02676
+offset_right = 267.48376
+offset_bottom = 446.34225
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_8ho6b")
+theme_override_font_sizes/font_size = 30
+text = "S to skip tutorial
+
+Right arrow for next slide"
+metadata/_edit_use_anchors_ = true
