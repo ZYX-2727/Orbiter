@@ -46,6 +46,7 @@ one_shot = true
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=2006140783]
 stream = ExtResource("7_o6xl0")
 autoplay = true
+parameters/looping = true
 
 [node name="Collect" type="AudioStreamPlayer" parent="." unique_id=1873386821]
 stream = ExtResource("8_tipki")

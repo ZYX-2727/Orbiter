@@ -139,6 +139,7 @@ texture = ExtResource("5_cq4me")
 
 [node name="Panel" type="Panel" parent="Slide4" unique_id=204035051]
 anchors_preset = -1
+anchor_top = -0.0929156
 anchor_bottom = -0.0929156
 offset_left = -156.29138
 offset_top = 114.12836
@@ -174,6 +175,7 @@ texture = ExtResource("3_cq4me")
 [node name="Panel" type="Panel" parent="Slide3" unique_id=1912491423]
 anchors_preset = -1
 anchor_left = -0.03176351
+anchor_top = -0.07159064
 offset_left = -151.31812
 offset_top = 50.470642
 offset_right = 517.08813
@@ -183,9 +185,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Score" type="Label" parent="Slide3/Panel" unique_id=666620235]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
+anchors_preset = -1
+anchor_left = 0.45685998
+anchor_right = 0.56635636
+anchor_bottom = 0.10192647
 offset_left = -308.3422
 offset_top = 7.957248
 offset_right = 312.65784
@@ -198,7 +201,8 @@ theme_override_font_sizes/font_size = 50
 text = "Distance is the primary way to 
 gain points in orbiter. To move,
 click to go up, release to go down, 
-and try to avoid the asteroids!"
+and try to avoid the asteroids, and 
+dont go off of the screen!"
 metadata/_edit_use_anchors_ = true
 
 [node name="Slide2" type="Sprite2D" parent="." unique_id=1404340950]
